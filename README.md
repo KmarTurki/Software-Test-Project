@@ -13,12 +13,12 @@ This project explicitly utilizes the following four techniques to design test ca
 **Application:** Used for fields like quantity inputs (min/max), search string lengths, and price filters.
 **Example:** Testing cart quantity with 0, 1, 999, 1000.
 
-### 2️⃣ Partition d’équivalence (Equivalence Partitioning – EP)
+### 2️⃣ Partition d'équivalence (Equivalence Partitioning – EP)
 **Focus:** Grouping inputs into valid and invalid partitions, assuming all values in a partition behave similarly.
 **Application:** Used for form validation (email formats, phone numbers) and product filtering (price ranges).
 **Example:** Testing email with valid format (`user@test.com`) vs. invalid format (`user@`).
 
-### 3️⃣ Tests de transition d’état (State Transition Testing)
+### 3️⃣ Tests de transition d'état (State Transition Testing)
 **Focus:** Validating the system's behavior as it transitions between different states based on events.
 **Application:** Used for complex flows like Checkout (Cart -> Billing -> Payment -> Success) and Order History.
 **Example:** Verifying a product moves from "In Stock" to "Reserved" or "Sold" states.
@@ -43,4 +43,3 @@ This project explicitly utilizes the following four techniques to design test ca
 1.  Clone the repository.
 2.  Review the `TEST_ARCHITECTURE.md` for the overall strategy.
 3.  Navigate to `tests/suites/` to explore specific test scenarios and the techniques applied.
-
