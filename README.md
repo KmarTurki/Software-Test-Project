@@ -30,16 +30,61 @@ This project explicitly utilizes the following four techniques to design test ca
 
 ## Project Structure
 - `src/`: Source code (placeholder).
-- `tests/`: Contains all test documentation and cases.
+- `tests/`: Contains all test documentation and automated tests.
+    - `conftest.py`: Pytest configuration and fixtures.
+    - `test_01_configuration.py`: Configuration Testing (2 tests).
+    - `test_02_bva_ep.py`: BVA and EP tests (3 tests).
+    - `test_03_state_transition.py`: State Transition tests (2 tests).
+    - `test_04_additional_bva_ep.py`: Additional BVA/EP tests (7 tests).
+    - `test_05_additional_state.py`: Additional State Transition tests (5 tests).
+    - `test_06_additional_config.py`: Additional Configuration tests (7 tests).
     - `suites/`: High-level documentation of test suites.
         - `cross_browser_suite.md`: Tests focusing on browser compatibility.
         - `responsive_design_suite.md`: Tests focusing on device adaptability.
         - `performance_load_suite.md`: Tests focusing on system performance.
         - `stress_resilience_suite.md`: Tests focusing on system stability.
-    - `cases/`: Detailed test case specifications (to be implemented).
+    - `cases/`: Detailed test case specifications.
 - `TEST_ARCHITECTURE.md`: Full ISTQB-Certified Test Architecture Document.
+- `TEST_CASES_SUMMARY.md`: Complete summary of all 28 test cases.
+- `requirements.txt`: Python dependencies (pytest, selenium, webdriver-manager).
 
 ## Setup & Usage
-1.  Clone the repository.
-2.  Review the `TEST_ARCHITECTURE.md` for the overall strategy.
-3.  Navigate to `tests/suites/` to explore specific test scenarios and the techniques applied.
+
+### Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/KmarTurki/Software-Test-Project.git
+cd Software-Test-Project
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Running Tests
+
+**Run all tests:**
+```bash
+pytest tests/
+```
+
+**Run with verbose output:**
+```bash
+pytest tests/ -v
+```
+
+**Run specific test file:**
+```bash
+pytest tests/test_01_configuration.py
+```
+
+**Run specific test:**
+```bash
+pytest tests/test_02_bva_ep.py::test_search_bva
+```
+
+### Documentation
+1. Review the `TEST_ARCHITECTURE.md` for the overall strategy.
+2. Navigate to `tests/suites/` to explore specific test scenarios and the techniques applied.
+3. See `TEST_CASES_SUMMARY.md` for a complete list of all 28 test cases.
