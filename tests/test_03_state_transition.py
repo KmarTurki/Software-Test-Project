@@ -6,14 +6,11 @@ import time
 
 # ISTQB Technique: State Transition Testing
 
-def test_cart_state_transition(driver, base_url):
+def test_cart_STATE_TRANSITION(driver, base_url):
     """
     TC-005: Update Cart Quantity - State Transition
-    Technique: State Transition Testing
-    State 1: Empty Cart
-    State 2: Item Added
-    State 3: Quantity Updated
-    State 4: Item Removed (Empty)
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: Empty Cart → Item Added → Quantity Updated → Item Removed
     """
     driver.get(base_url)
     wait = WebDriverWait(driver, 10)
@@ -57,11 +54,11 @@ def test_cart_state_transition(driver, base_url):
     empty_msg = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[contains(text(), 'Your shopping cart is empty!')]")))
     assert empty_msg.is_displayed()
 
-def test_login_state_transition(driver, base_url):
+def test_login_STATE_TRANSITION(driver, base_url):
     """
     TC-012: Login Functionality - State Transition
-    Technique: State Transition Testing
-    States: Logged Out -> Login Failed -> Logged In -> Logged Out
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: Logged Out → Login Failed → (Logged In)
     """
     driver.get(f"{base_url}/index.php?route=account/login")
     wait = WebDriverWait(driver, 10)

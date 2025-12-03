@@ -28,16 +28,37 @@ This project explicitly utilizes the following four techniques to design test ca
 **Application:** Used for Cross-Browser Compatibility (Chrome, Firefox, Edge) and Responsive Design (Mobile, Tablet, Desktop).
 **Example:** Verifying the layout adapts correctly on an iPhone SE viewport vs. a Desktop monitor.
 
+## Test Naming Convention
+
+All test functions are clearly labeled with their ISTQB technique in the function name:
+
+- **`test_*_BVA`** - Boundary Value Analysis tests
+- **`test_*_EP`** - Equivalence Partitioning tests
+- **`test_*_STATE_TRANSITION`** - State Transition Testing tests
+- **`test_*_CONFIGURATION`** - Configuration Testing tests
+
+Each test also includes a ✅ marker in its docstring indicating the technique used.
+
+**Example:**
+```python
+def test_search_BVA(driver, base_url):
+    """
+    TC-001: Product Search with Boundary Value Analysis
+    ✅ ISTQB Technique: BOUNDARY VALUE ANALYSIS (BVA)
+    Tests: Empty string, 1 char (min), valid, 255 chars (max boundary)
+    """
+```
+
 ## Project Structure
 - `src/`: Source code (placeholder).
 - `tests/`: Contains all test documentation and automated tests.
     - `conftest.py`: Pytest configuration and fixtures.
-    - `test_01_configuration.py`: Configuration Testing (2 tests).
-    - `test_02_bva_ep.py`: BVA and EP tests (3 tests).
-    - `test_03_state_transition.py`: State Transition tests (2 tests).
-    - `test_04_additional_bva_ep.py`: Additional BVA/EP tests (7 tests).
-    - `test_05_additional_state.py`: Additional State Transition tests (5 tests).
-    - `test_06_additional_config.py`: Additional Configuration tests (7 tests).
+    - `test_01_configuration.py`: **CONFIGURATION** tests (2 functions, 4 executions).
+    - `test_02_bva_ep.py`: **BVA** and **EP** tests (3 functions).
+    - `test_03_state_transition.py`: **STATE TRANSITION** tests (2 functions).
+    - `test_04_additional_bva_ep.py`: Additional **BVA/EP** tests (6 functions).
+    - `test_05_additional_state.py`: Additional **STATE TRANSITION** tests (5 functions).
+    - `test_06_additional_config.py`: Additional **CONFIGURATION** tests (7 functions).
     - `suites/`: High-level documentation of test suites.
         - `cross_browser_suite.md`: Tests focusing on browser compatibility.
         - `responsive_design_suite.md`: Tests focusing on device adaptability.
@@ -46,7 +67,10 @@ This project explicitly utilizes the following four techniques to design test ca
     - `cases/`: Detailed test case specifications.
 - `TEST_ARCHITECTURE.md`: Full ISTQB-Certified Test Architecture Document.
 - `TEST_CASES_SUMMARY.md`: Complete summary of all 28 test cases.
+- `TEST_COUNT.md`: Quick reference showing all 25 test functions.
 - `requirements.txt`: Python dependencies (pytest, selenium, webdriver-manager).
+
+**Total: 25 test functions across 6 test files**
 
 ## Setup & Usage
 

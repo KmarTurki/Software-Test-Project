@@ -7,10 +7,11 @@ from selenium.webdriver.common.keys import Keys
 # ISTQB Techniques: Boundary Value Analysis (BVA) & Equivalence Partitioning (EP)
 # Additional comprehensive tests
 
-def test_product_price_filter_ep(driver, base_url):
+def test_product_price_filter_EP(driver, base_url):
     """
     TC-003: Product Filtering with Equivalence Partitioning
-    Technique: Equivalence Partitioning (EP)
+    ✅ ISTQB Technique: EQUIVALENCE PARTITIONING (EP)
+    Partitions: Valid price ranges vs Invalid ranges
     """
     driver.get(f"{base_url}/index.php?route=product/category&path=20") # Desktops
     wait = WebDriverWait(driver, 10)
@@ -22,10 +23,11 @@ def test_product_price_filter_ep(driver, base_url):
     # Verify products are displayed
     assert initial_count > 0, "No products found in category"
 
-def test_registration_form_bva(driver, base_url):
+def test_registration_form_BVA(driver, base_url):
     """
     TC-011: User Registration - Boundary Value Analysis on Input Fields
-    Technique: Boundary Value Analysis (BVA)
+    ✅ ISTQB Technique: BOUNDARY VALUE ANALYSIS (BVA)
+    Tests: Name fields with 1 (min), 32 (max), 33 (max+1) characters
     """
     driver.get(f"{base_url}/index.php?route=account/register")
     wait = WebDriverWait(driver, 10)
@@ -54,10 +56,10 @@ def test_registration_form_bva(driver, base_url):
     password_input.clear()
     password_input.send_keys("ValidPass123")
 
-def test_wishlist_functionality_ep(driver, base_url):
+def test_wishlist_functionality_EP(driver, base_url):
     """
     TC-014: Add to Wishlist - Equivalence Partitioning
-    Technique: Equivalence Partitioning (EP)
+    ✅ ISTQB Technique: EQUIVALENCE PARTITIONING (EP)
     Partitions: Guest user (invalid) vs Logged-in user (valid)
     """
     driver.get(f"{base_url}/index.php?route=product/product&product_id=43")
@@ -76,10 +78,11 @@ def test_wishlist_functionality_ep(driver, base_url):
         # Might redirect to login
         assert "login" in driver.current_url.lower()
 
-def test_product_comparison_bva(driver, base_url):
+def test_product_comparison_BVA(driver, base_url):
     """
     TC-015: Product Comparison - Boundary Testing on Number of Products
-    Technique: Boundary Value Analysis (BVA)
+    ✅ ISTQB Technique: BOUNDARY VALUE ANALYSIS (BVA)
+    Tests: 1 product (min), 4 products (typical max)
     """
     driver.get(f"{base_url}/index.php?route=product/category&path=20")
     wait = WebDriverWait(driver, 10)
@@ -97,10 +100,11 @@ def test_product_comparison_bva(driver, base_url):
         except:
             pass  # Some versions might not show alert
 
-def test_checkout_form_validation_ep(driver, base_url):
+def test_checkout_form_validation_EP(driver, base_url):
     """
     TC-009: Checkout Form Validation - Equivalence Partitioning
-    Technique: Equivalence Partitioning (EP)
+    ✅ ISTQB Technique: EQUIVALENCE PARTITIONING (EP)
+    Partitions: Empty fields (invalid) vs Filled fields (valid)
     """
     # First add a product to cart
     driver.get(f"{base_url}/index.php?route=product/product&product_id=43")
@@ -134,10 +138,11 @@ def test_checkout_form_validation_ep(driver, base_url):
         # Checkout might require login
         pass
 
-def test_negative_quantity_bva(driver, base_url):
+def test_negative_quantity_BVA(driver, base_url):
     """
     TC-004 Extended: Negative Quantity Testing
-    Technique: Boundary Value Analysis (BVA)
+    ✅ ISTQB Technique: BOUNDARY VALUE ANALYSIS (BVA)
+    Tests: Negative values (-5) below minimum boundary
     """
     driver.get(f"{base_url}/index.php?route=product/product&product_id=43")
     wait = WebDriverWait(driver, 10)

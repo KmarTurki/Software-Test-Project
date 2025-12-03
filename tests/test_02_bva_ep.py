@@ -6,10 +6,11 @@ import time
 
 # ISTQB Techniques: Boundary Value Analysis (BVA) & Equivalence Partitioning (EP)
 
-def test_search_bva(driver, base_url):
+def test_search_BVA(driver, base_url):
     """
     TC-001: Product Search with Boundary Value Analysis
-    Technique: Boundary Value Analysis (BVA)
+    ✅ ISTQB Technique: BOUNDARY VALUE ANALYSIS (BVA)
+    Tests: Empty string, 1 char (min), valid, 255 chars (max boundary)
     """
     driver.get(base_url)
     wait = WebDriverWait(driver, 10)
@@ -51,10 +52,11 @@ def test_search_bva(driver, base_url):
     content = wait.until(EC.visibility_of_element_located((By.ID, "content")))
     assert content.is_displayed()
 
-def test_cart_quantity_bva(driver, base_url):
+def test_cart_quantity_BVA(driver, base_url):
     """
     TC-004: Add to Cart - Quantity Boundary Value Analysis
-    Technique: Boundary Value Analysis (BVA)
+    ✅ ISTQB Technique: BOUNDARY VALUE ANALYSIS (BVA)
+    Tests: 0 (min-1), 1 (min valid), normal values
     """
     # Navigate to a product page (MacBook)
     driver.get(f"{base_url}/index.php?route=product/product&product_id=43")
@@ -83,10 +85,11 @@ def test_cart_quantity_bva(driver, base_url):
     success_alert = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert-success")))
     assert success_alert.is_displayed()
 
-def test_contact_form_ep(driver, base_url):
+def test_contact_form_EP(driver, base_url):
     """
     TC-009 (Adapted): Contact Form Validation
-    Technique: Equivalence Partitioning (EP)
+    ✅ ISTQB Technique: EQUIVALENCE PARTITIONING (EP)
+    Partitions: Invalid email format vs Valid email format
     """
     driver.get(f"{base_url}/index.php?route=information/contact")
     wait = WebDriverWait(driver, 10)

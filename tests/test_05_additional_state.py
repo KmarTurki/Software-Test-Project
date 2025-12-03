@@ -7,11 +7,11 @@ import time
 # ISTQB Technique: State Transition Testing
 # Additional comprehensive state transition tests
 
-def test_product_category_navigation_state(driver, base_url):
+def test_product_category_navigation_STATE_TRANSITION(driver, base_url):
     """
     TC-002: Product Category Navigation - State Transition Testing
-    Technique: State Transition Testing
-    States: Home -> Category -> Subcategory -> Product -> Back
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: Home → Category → Product → Back
     """
     driver.get(base_url)
     wait = WebDriverWait(driver, 10)
@@ -52,10 +52,11 @@ def test_product_category_navigation_state(driver, base_url):
     products = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".product-thumb")))
     assert len(products) > 0
 
-def test_account_dashboard_navigation_state(driver, base_url):
+def test_account_dashboard_STATE_TRANSITION(driver, base_url):
     """
     TC-013: Account Dashboard Navigation - State Transitions
-    Technique: State Transition Testing
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: Dashboard sections and protected page redirects
     """
     driver.get(f"{base_url}/index.php?route=account/login")
     wait = WebDriverWait(driver, 10)
@@ -72,11 +73,11 @@ def test_account_dashboard_navigation_state(driver, base_url):
     # Should redirect to login (state transition: Protected -> Login Required)
     assert "login" in driver.current_url.lower()
 
-def test_guest_checkout_flow_state(driver, base_url):
+def test_guest_checkout_flow_STATE_TRANSITION(driver, base_url):
     """
     TC-008: Guest Checkout - Complete Flow with State Transitions
-    Technique: State Transition Testing
-    States: Cart -> Checkout -> Billing -> Payment -> Confirmation
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: Cart → Checkout → Billing → Payment
     """
     # State 1: Add product to cart
     driver.get(f"{base_url}/index.php?route=product/product&product_id=43")
@@ -108,11 +109,11 @@ def test_guest_checkout_flow_state(driver, base_url):
         # Might already be on billing form or require login
         pass
 
-def test_session_timeout_state(driver, base_url):
+def test_session_timeout_STATE_TRANSITION(driver, base_url):
     """
     TC-010: Checkout Session Timeout - State Transition
-    Technique: State Transition Testing
-    States: Active Session -> Timeout -> Login Required
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: Active Session → Timeout (cookies cleared) → Cart check
     """
     driver.get(f"{base_url}/index.php?route=product/product&product_id=43")
     wait = WebDriverWait(driver, 10)
@@ -130,11 +131,11 @@ def test_session_timeout_state(driver, base_url):
     # Cart might be empty or preserved depending on implementation
     # This tests the state transition behavior
 
-def test_out_of_stock_state(driver, base_url):
+def test_out_of_stock_STATE_TRANSITION(driver, base_url):
     """
     TC-017: Out of Stock Product Handling - State Transition
-    Technique: State Transition Testing
-    States: In Stock -> Out of Stock -> Add to Cart Disabled
+    ✅ ISTQB Technique: STATE TRANSITION TESTING
+    States: In Stock → Out of Stock → Add to Cart Disabled
     """
     # Note: This test requires finding an out-of-stock product
     # For demo purposes, we'll check the product page structure
