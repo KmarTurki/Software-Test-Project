@@ -68,13 +68,13 @@ def test_cross_browser_compatibility(driver, base_url):
     # Wait for Cloudflare challenge to complete and page to load (60 seconds)
     wait = WebDriverWait(driver, 60)
     try:
-        wait.until(lambda d: "Your Store" in d.title)
+        wait.until(lambda d: d.title and "Your Store" in d.title)
     except:
         # If timeout, try refreshing once
         print("\nCloudflare challenge detected. Refreshing page...")
         driver.refresh()
         time.sleep(5)
-        wait.until(lambda d: "Your Store" in d.title)
+        wait.until(lambda d: d.title and "Your Store" in d.title)
     
     assert "Your Store" in driver.title
 
