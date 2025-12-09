@@ -1,4 +1,0 @@
-pytest
-selenium
-webdriver-manager
-undetected-chromedriver

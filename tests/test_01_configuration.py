@@ -21,8 +21,7 @@ def test_responsive_layout(driver, base_url, viewport):
     driver.set_window_size(viewport["width"], viewport["height"])
     driver.get(base_url)
     
-    # Wait longer for Cloudflare challenge to complete
-    wait = WebDriverWait(driver, 60)
+    wait = WebDriverWait(driver, 10)
     
     # Check if critical elements are visible
     logo = wait.until(EC.visibility_of_element_located((By.ID, "logo")))
@@ -57,24 +56,7 @@ def test_cross_browser_compatibility(driver, base_url):
     Note: To test other browsers (Firefox, Edge), we would need to configure 
     different drivers in conftest.py or use a grid. 
     This test verifies the script runs on the configured driver (Chrome).
-    
-    IMPORTANT: This test may encounter Cloudflare bot protection.
-    If the browser opens showing "Verifying you are human", the test will wait
-    up to 60 seconds for the challenge to complete. You may need to manually
-    interact with the browser if prompted. See CLOUDFLARE_WORKAROUND.md for details.
     """
     driver.get(base_url)
-    
-    # Wait for Cloudflare challenge to complete and page to load (60 seconds)
-    wait = WebDriverWait(driver, 60)
-    try:
-        wait.until(lambda d: d.title and "Your Store" in d.title)
-    except:
-        # If timeout, try refreshing once
-        print("\nCloudflare challenge detected. Refreshing page...")
-        driver.refresh()
-        time.sleep(5)
-        wait.until(lambda d: d.title and "Your Store" in d.title)
-    
     assert "Your Store" in driver.title
 
